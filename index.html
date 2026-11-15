@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0E1216">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="description" content="Vorschau V1.1 der Padel-Muster-App. Markenneutral, alle Inhalte sind Beispieldaten.">
+  <title>Padel-Halle – Vorschau V1.1</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <div class="stage" id="stage" aria-hidden="true">
+      <video id="stage-video" class="stage-media" poster="media/poster-start.webp" muted loop playsinline webkit-playsinline preload="auto">
+        <source src="media/start-drone.mp4" type="video/mp4">
+      </video>
+      <img id="stage-image" class="stage-media is-off" alt="">
+      <div class="stage-veil"></div>
+    </div>
+    <header class="topbar">
+      <p class="wf-label">Vorschau V1.1</p>
+      <p class="brand">Padel-Halle</p>
+    </header>
+
+    <main id="main">
+      <section class="screen is-on" id="screen-start" data-screen="start" aria-label="Start">
+        <div class="start-hero">
+          <div class="drone-copy">
+            <div>
+              <h1 class="drone-title">Drohnenvideo Halle</h1>
+              <p class="drone-meta"><span class="loop-dot"></span>Schleife · ohne Ton</p>
+            </div>
+            <button class="btn btn-primary" type="button" data-go="buchen">Jetzt buchen</button>
+          </div>
+        </div>
+        <section class="reviews sheet-card" aria-labelledby="reviews-title">
+          <div class="row-head">
+            <h2 class="section-title" id="reviews-title">Stimmen zur Halle</h2>
+            <span class="sample">Beispieldaten</span>
+          </div>
+          <div class="review-rail">
+            <article class="review">
+              <div class="stars" aria-label="5 von 5"></div>
+              <blockquote>„Plätze in einem Stück, Buchung in zwei Minuten.</blockquote>
+              <footer>Anna M. · Google</footer>
+            </article>
+            <article class="review">
+              <div class="stars" aria-label="5 von 5"></div>
+              <blockquote>„Abendrunden finden sich schnell. Halle hell und gut belüftet.“</blockquote>
+              <footer>Lukas R. · Trustpilot</footer>
+            </article>
+            <article class="review">
+              <div class="stars" aria-label="4 von 5"></div>
+              <blockquote>„Sauber, pünktlich, nette Theke. Ein Platz war etwas rutschig nach dem Regen.“</blockquote>
+              <footer>Sofia T. · Google</footer>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="screen" id="screen-buchen" data-screen="buchen" aria-label="Buchen"></section>
+      <section class="screen" id="screen-matches" data-screen="matches" aria-label="Matches"></section>
+      <section class="screen" id="screen-turniere" data-screen="turniere" aria-label="Turniere"></section>
+      <section class="screen" id="screen-profil" data-screen="profil" aria-label="Profil"></section>
+    </main>
+
+    <nav class="tabbar" aria-label="Hauptnavigation">
+      <button class="tab is-on" type="button" data-tab="start" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 4l8 7.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"/></svg>
+        Start
+      </button>
+      <button class="tab" type="button" data-tab="buchen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16M8 3v4M16 3v4"/></svg>
+        Buchen
+      </button>
+      <button class="tab" type="button" data-tab="matches">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M4 19c.4-3 2.4-5 5-5s4.6 2 5 5M14 14.2c2.2.3 3.8 2.1 4.2 4.8"/></svg>
+        Matches
+      </button>
+      <button class="tab" type="button" data-tab="turniere">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v3a4 4 0 0 1-4 4 4 4 0 0 1-4-4z"/><path d="M8 7H5.5A2.5 2.5 0 0 1 3 4.5V4h5M16 7h2.5A2.5 2.5 0 0 0 21 4.5V4h-5"/><path d="M12 11v4M8 20h8M12 15v5"/></svg>
+        Turniere
+      </button>
+      <button class="tab" type="button" data-tab="profil">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5 19.5c.8-3.4 3.3-5.2 7-5.2s6.2 1.8 7 5.2"/></svg>
+        Profil
+      </button>
+    </nav>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <dialog id="dlg-waitlist" aria-labelledby="wait-title">
+    <form class="sheet" method="dialog" id="form-waitlist">
+      <h2 id="wait-title">Platz ist belegt</h2>
+      <p id="wait-copy"></p>
+      <span class="sample" style="align-self:flex-start">Beispieldaten</span>
+      <label>Name
+        <input type="text" name="name" value="Alex K." autocomplete="name">
+      </label>
+      <div class="sheet-actions">
+        <button class="btn btn-primary" type="submit" value="join">Auf Warteliste setzen</button>
+        <button class="btn btn-secondary" type="submit" value="cancel">Abbrechen</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="dlg-join" aria-labelledby="join-title">
+    <form class="sheet" method="dialog" id="form-join">
+      <h2 id="join-title">Match beitreten</h2>
+      <p id="join-copy"></p>
+      <span class="sample" style="align-self:flex-start">Beispieldaten</span>
+      <div class="sheet-actions">
+        <button class="btn btn-primary" type="submit" value="join">Beitreten</button>
+        <button class="btn btn-secondary" type="submit" value="cancel">Abbrechen</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="dlg-full" aria-labelledby="full-title">
+    <div class="sheet">
+      <h2 id="full-title">4/4 – Match steht</h2>
+      <div class="avatars" id="full-avatars"></div>
+      <p>Alle Plätze sind besetzt. Ihr könnt spielen.</p>
+      <div class="sheet-actions">
+        <button class="btn btn-primary" type="button" data-close="dlg-full">Verstanden</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="dlg-create" aria-labelledby="create-title">
+    <form class="sheet" method="dialog" id="form-create">
+      <h2 id="create-title">Offenes Match anlegen</h2>
+      <p>Zuerst das Level wählen. Danach buchst du Datum, Uhrzeit und Platz.</p>
+      <span class="sample" style="align-self:flex-start">Beispieldaten</span>
+      <label>Spielstärke
+        <select name="level">
+          <option value="1">Level 1</option>
+          <option value="2">Level 2</option>
+          <option value="3">Level 3</option>
+          <option value="4" selected>Level 4</option>
+          <option value="5">Level 5</option>
+          <option value="6">Level 6</option>
+          <option value="7">Level 7</option>
+        </select>
+      </label>
+      <div class="sheet-actions">
+        <button class="btn btn-primary" type="submit" value="create">Weiter zur Buchung</button>
+        <button class="btn btn-secondary" type="submit" value="cancel">Abbrechen</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="dlg-team" aria-labelledby="team-title">
+    <form class="sheet" method="dialog" id="form-team">
+      <h2 id="team-title">Team anmelden</h2>
+      <p id="team-copy"></p>
+      <span class="sample" style="align-self:flex-start">Beispieldaten</span>
+      <label>Teamname
+        <input type="text" name="team" value="Team Muster" required>
+      </label>
+      <label>Spieler 1
+        <input type="text" name="p1" value="Alex K.">
+      </label>
+      <label>Spieler 2
+        <input type="text" name="p2" value="Mira S.">
+      </label>
+      <div class="sheet-actions">
+        <button class="btn btn-primary" type="submit" value="join">Team anmelden</button>
+        <button class="btn btn-secondary" type="submit" value="cancel">Abbrechen</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

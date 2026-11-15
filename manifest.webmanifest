@@ -1,0 +1,20 @@
+{
+  "name": "Padel-Halle",
+  "short_name": "Padel-Halle",
+  "description": "Vorschau V1.1 der Padel-Muster-App. Markenneutral, alle Inhalte sind Beispieldaten.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0E1216",
+  "theme_color": "#0E1216",
+  "lang": "de",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
